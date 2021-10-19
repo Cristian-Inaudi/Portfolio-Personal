@@ -1,0 +1,3 @@
+El objetivo del proyecto consiste crear un sitio web informativo y de reservas completo.
+
+Proyecto dictado durante el cursado de curso de Desarrollo Web Completo.
