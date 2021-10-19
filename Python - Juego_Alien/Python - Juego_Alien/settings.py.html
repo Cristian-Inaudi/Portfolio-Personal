@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>settings.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #0033b3;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+settings.py</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">class </span><span class="s0">Settings:</span>
+    <span class="s2">&quot;&quot;&quot;Una clase para almacenar todas las configuraciones para Alien Invasion.&quot;&quot;&quot;</span>
+
+    <span class="s1">def </span><span class="s0">__init__(self):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar las configuraciones del juego.&quot;&quot;&quot;</span>
+        <span class="s2">#Configuraciones de Pantalla.</span>
+        <span class="s0">self.screen_width = </span><span class="s3">1200</span>
+        <span class="s0">self.screen_height = </span><span class="s3">700</span>
+        <span class="s0">self.bg_color = (</span><span class="s3">230</span><span class="s0">, </span><span class="s3">230</span><span class="s0">, </span><span class="s3">230</span><span class="s0">)</span>
+
+        <span class="s2">#Configuraciones nave.</span>
+        <span class="s0">self.ship_speed = </span><span class="s3">2</span>
+        <span class="s0">self.ship_limit = </span><span class="s3">3</span>
+
+        <span class="s2">#Configuraciones de las balas.</span>
+        <span class="s0">self.bullet_speed = </span><span class="s3">3</span>
+        <span class="s0">self.bullet_width = </span><span class="s3">3</span>
+        <span class="s0">self.bullet_height = </span><span class="s3">15</span>
+        <span class="s0">self.bullet_color = (</span><span class="s3">60</span><span class="s0">, </span><span class="s3">60</span><span class="s0">, </span><span class="s3">60</span><span class="s0">)</span>
+        <span class="s0">self.bullet_allowed = </span><span class="s3">3</span>
+
+        <span class="s2">#Configuraciones de los aliens.</span>
+        <span class="s0">self.fleet_drop_speed = </span><span class="s3">20</span>
+
+        <span class="s2">#Incremento velocidad del juego.</span>
+        <span class="s0">self.speedup_scale = </span><span class="s3">1.1</span>
+
+        <span class="s2">#Incremento puntaje por alien.</span>
+        <span class="s0">self.score_scale = </span><span class="s3">1.5</span>
+
+        <span class="s0">self.initialize_dynamic_settings()</span>
+
+    <span class="s1">def </span><span class="s0">initialize_dynamic_settings(self):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar configuraciones que cambien durante todo el juego.&quot;&quot;&quot;</span>
+        <span class="s0">self.ship_speed = </span><span class="s3">1.5</span>
+        <span class="s0">self.bullet_speed = </span><span class="s3">3.0</span>
+        <span class="s0">self.alien_speed = </span><span class="s3">1.0</span>
+
+        <span class="s2">#fleet_direction de 1 representa derecha; -1 representa izquierda.</span>
+        <span class="s0">self.fleet_direction = </span><span class="s3">1</span>
+
+        <span class="s2">#Puntaje.</span>
+        <span class="s0">self.alien_points = </span><span class="s3">50</span>
+
+    <span class="s1">def </span><span class="s0">increase_speed(self):</span>
+        <span class="s2">&quot;&quot;&quot;Incrementa configuracion de velocidades y puntos por alien.&quot;&quot;&quot;</span>
+        <span class="s0">self.ship_speed *= self.speedup_scale</span>
+        <span class="s0">self.bullet_speed *= self.speedup_scale</span>
+        <span class="s0">self.alien_speed *= self.speedup_scale</span>
+
+        <span class="s0">self.alien_points = int(self.alien_points * self.score_scale)</span>
+
+
+
+</pre>
+</body>
+</html>

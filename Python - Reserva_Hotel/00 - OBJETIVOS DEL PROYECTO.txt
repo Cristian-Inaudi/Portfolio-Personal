@@ -1,0 +1,1 @@
+El objetivo del proyecto consiste en crear una serie de menues relacionado a reservas de habitaciones para hoteles.

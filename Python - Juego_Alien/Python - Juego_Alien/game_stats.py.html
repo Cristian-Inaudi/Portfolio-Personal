@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>game_stats.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+game_stats.py</font>
+</center></td></tr></table>
+<pre><span class="s0">class </span><span class="s1">GameStats:</span>
+    <span class="s2">&quot;&quot;&quot;Seguimiento de estadisticas para Alien Invasion.&quot;&quot;&quot;</span>
+
+    <span class="s0">def </span><span class="s1">__init__(self, ai_game):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar estadisticas.&quot;&quot;&quot;</span>
+        <span class="s1">self.settings = ai_game.settings</span>
+        <span class="s1">self.reset_stats()</span>
+
+        <span class="s2">#Comenzar Alien Invasion en un estado activo.</span>
+        <span class="s1">self.game_active = </span><span class="s0">False</span>
+
+        <span class="s2">#Record puntaje nunca debe reiniciarse.</span>
+        <span class="s1">self.high_score = </span><span class="s3">0</span>
+
+    <span class="s0">def </span><span class="s1">reset_stats(self):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar las estadisticas que puedan cambiar durante el juego.&quot;&quot;&quot;</span>
+        <span class="s1">self.ships_left = self.settings.ship_limit</span>
+        <span class="s1">self.score = </span><span class="s3">0</span>
+        <span class="s1">self.level = </span><span class="s3">1</span>
+
+</pre>
+</body>
+</html>

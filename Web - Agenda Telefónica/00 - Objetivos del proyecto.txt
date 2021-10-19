@@ -1,0 +1,4 @@
+El objetivo del proyecto consiste en representar una página con el funcionamiento de una agenda 
+telefónica y sus correspondientes funciones para agregar, borrar, modificar y filtrar números.
+
+Proyecto realizado durante la capacitación en curso de Desarrollo Web.

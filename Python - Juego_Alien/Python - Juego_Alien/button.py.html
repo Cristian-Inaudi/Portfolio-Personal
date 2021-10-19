@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>button.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+button.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pygame.font</span>
+
+<span class="s0">class </span><span class="s1">Button:</span>
+
+    <span class="s0">def </span><span class="s1">__init__(self, ai_game, msg):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar atributos del boton.&quot;&quot;&quot;</span>
+        <span class="s1">self.screen = ai_game.screen</span>
+        <span class="s1">self.screen_rect = self.screen.get_rect()</span>
+
+        <span class="s2">#Definir dimensiones y propiedades del boton.</span>
+        <span class="s1">self.width, self.height = </span><span class="s3">200</span><span class="s1">, </span><span class="s3">50</span>
+        <span class="s1">self.button_color = (</span><span class="s3">0</span><span class="s1">, </span><span class="s3">255</span><span class="s1">, </span><span class="s3">0</span><span class="s1">)</span>
+        <span class="s1">self.text_color = (</span><span class="s3">255</span><span class="s1">, </span><span class="s3">255</span><span class="s1">, </span><span class="s3">255</span><span class="s1">)</span>
+        <span class="s1">self.font = pygame.font.SysFont(</span><span class="s0">None</span><span class="s1">, </span><span class="s3">48</span><span class="s1">)</span>
+
+        <span class="s2">#Construir el objeto rectangular boton y centrarlo.</span>
+        <span class="s1">self.rect = pygame.Rect(</span><span class="s3">0</span><span class="s1">, </span><span class="s3">0</span><span class="s1">, self.width, self.height)</span>
+        <span class="s1">self.rect.center = self.screen_rect.center</span>
+
+        <span class="s2">#El boton mensaje necesita ser preparado solo una vez.</span>
+        <span class="s1">self._prep_msg(msg)</span>
+
+    <span class="s0">def </span><span class="s1">_prep_msg(self,msg):</span>
+        <span class="s2">&quot;&quot;&quot;Convertir el mensaje a una imagen rendirazada y centrar el texto en el boton.&quot;&quot;&quot;</span>
+        <span class="s1">self.msg_image = self.font.render(msg, </span><span class="s0">True</span><span class="s1">, self.text_color, self.button_color)</span>
+        <span class="s1">self.msg_image_rect = self.msg_image.get_rect()</span>
+        <span class="s1">self.msg_image_rect.center = self.rect.center</span>
+
+    <span class="s0">def </span><span class="s1">draw_button(self):</span>
+        <span class="s2">#Dibujar boton en blanco y despues dibujar el mensaje.</span>
+        <span class="s1">self.screen.fill(self.button_color, self.rect)</span>
+        <span class="s1">self.screen.blit(self.msg_image, self.msg_image_rect)</span>
+
+
+</pre>
+</body>
+</html>

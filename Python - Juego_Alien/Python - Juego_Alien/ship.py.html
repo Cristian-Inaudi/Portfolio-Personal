@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>ship.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #008080; font-weight: bold;}
+.s4 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ship.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pygame</span>
+<span class="s0">from </span><span class="s1">pygame.sprite </span><span class="s0">import </span><span class="s1">Sprite</span>
+
+<span class="s0">class </span><span class="s1">Ship(Sprite):</span>
+    <span class="s2">&quot;&quot;&quot;Una clase para administrar la nave.&quot;&quot;&quot;</span>
+
+    <span class="s0">def </span><span class="s1">__init__(self, ai_game):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar la nave y configurar su posición inicial.&quot;&quot;&quot;</span>
+        <span class="s1">super().__init__()</span>
+        <span class="s1">self.screen = ai_game.screen</span>
+        <span class="s1">self.settings = ai_game.settings</span>
+        <span class="s1">self.screen_rect = ai_game.screen.get_rect()</span>
+
+        <span class="s2">#Cargar la imágen de la nave y obtener sus rectángulos.</span>
+        <span class="s1">self.image = pygame.image.load(</span><span class="s3">'imagenes/ship.png'</span><span class="s1">)</span>
+        <span class="s1">self.rect = self.image.get_rect()</span>
+
+        <span class="s2">#Comenzar cada nave ubicada al fondo y centrada en la pantalla.</span>
+        <span class="s1">self.rect.midbottom = self.screen_rect.midbottom</span>
+
+        <span class="s2">#Guardar el valor decimal para la posicion horizontal de la nave.</span>
+        <span class="s1">self.x = float(self.rect.x)</span>
+
+        <span class="s2">#Movimientos bandera</span>
+        <span class="s1">self.moving_right = </span><span class="s0">False</span>
+        <span class="s1">self.moving_left = </span><span class="s0">False</span>
+
+    <span class="s0">def </span><span class="s1">update(self):</span>
+        <span class="s2">&quot;&quot;&quot;Actualizar la posicion de la nave basado en el movimento bandera.&quot;&quot;&quot;</span>
+        <span class="s2">#Actualizar el valor X de la nave, no del rectangulo.</span>
+        <span class="s0">if </span><span class="s1">self.moving_right </span><span class="s0">and </span><span class="s1">self.rect.right &lt; self.screen_rect.right:</span>
+            <span class="s1">self.x += self.settings.ship_speed</span>
+        <span class="s0">if </span><span class="s1">self.moving_left </span><span class="s0">and </span><span class="s1">self.rect.left &gt; </span><span class="s4">0</span><span class="s1">:</span>
+            <span class="s1">self.x -= self.settings.ship_speed</span>
+
+        <span class="s2">#Actualizar objeto rectangulo desde self.x.</span>
+        <span class="s1">self.rect.x = self.x</span>
+
+    <span class="s0">def </span><span class="s1">blitme(self):</span>
+        <span class="s2">&quot;&quot;&quot;Dibujar la nave en su ubicación actual&quot;&quot;&quot;</span>
+        <span class="s1">self.screen.blit(self.image, self.rect)</span>
+
+    <span class="s0">def </span><span class="s1">center_ship(self):</span>
+        <span class="s2">&quot;&quot;&quot;Centrar la nave en la pantalla.&quot;&quot;&quot;</span>
+        <span class="s1">self.rect.midbottom = self.screen_rect.midbottom</span>
+        <span class="s1">self.x = float(self.rect.x)</span>
+</pre>
+</body>
+</html>

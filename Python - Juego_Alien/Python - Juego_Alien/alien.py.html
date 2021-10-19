@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>alien.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #008080; font-weight: bold;}
+.s4 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+alien.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pygame</span>
+<span class="s0">from </span><span class="s1">pygame.sprite </span><span class="s0">import </span><span class="s1">Sprite</span>
+
+<span class="s0">class </span><span class="s1">Alien(Sprite):</span>
+    <span class="s2">&quot;&quot;&quot;Una clase para representar a 1 alien de la flota.&quot;&quot;&quot;</span>
+    <span class="s0">def </span><span class="s1">__init__(self, ai_game):</span>
+        <span class="s2">&quot;&quot;&quot;Inicializar el alien y asignar su posicion inicial.&quot;&quot;&quot;</span>
+        <span class="s1">super().__init__()</span>
+        <span class="s1">self.screen = ai_game.screen</span>
+        <span class="s1">self.settings = ai_game.settings</span>
+
+        <span class="s2">#Cargar la imagen del alien y asignar sus atributos rectangulos.</span>
+        <span class="s1">self.image = pygame.image.load(</span><span class="s3">'imagenes/alien2.png'</span><span class="s1">)</span>
+        <span class="s1">self.rect = self.image.get_rect()</span>
+
+        <span class="s2">#Comenzar cada nuevo alien cerca del limite superior izquierdo de la pantalla.</span>
+        <span class="s1">self.rect.x = self.rect.width</span>
+        <span class="s1">self.rect.y = self.rect.height</span>
+
+        <span class="s2">#Almacenar la posicion horizontal exacta de los alien.</span>
+        <span class="s1">self.x = float(self.rect.x)</span>
+
+    <span class="s0">def </span><span class="s1">check_edges(self):</span>
+        <span class="s2">&quot;&quot;&quot;Retorna True si el alien esta al borde de la pantalla.&quot;&quot;&quot;</span>
+        <span class="s1">screen_rect = self.screen.get_rect()</span>
+        <span class="s0">if </span><span class="s1">self.rect.right &gt;= screen_rect.right </span><span class="s0">or </span><span class="s1">self.rect.left &lt;=</span><span class="s4">0</span><span class="s1">:</span>
+            <span class="s0">return True</span>
+
+    <span class="s0">def </span><span class="s1">update(self):</span>
+        <span class="s2">&quot;&quot;&quot;Mover el alien hacia la derecha o a la izquierda.&quot;&quot;&quot;</span>
+        <span class="s1">self.x += (self.settings.alien_speed * self.settings.fleet_direction)</span>
+        <span class="s1">self.rect.x = self.x</span>
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,4 @@
+El objetivo del proyecto consiste en simular idénticamente la Página Principal de la estancia,
+practicando de ésta forma destrezas en cuando a  HTML y CSS. 
+
+SITIO ORIGINAL: http://lagranadilla.com.ar/
